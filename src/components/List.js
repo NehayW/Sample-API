@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Text,
   View,
@@ -6,18 +6,19 @@ import {
   StyleSheet,
   ScrollView,
   FlatList,
-} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
+} from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { ActionTypes } from "../constants";
 
-export const List = props => {
-  const users = useSelector(state => state);
+export const List = (props) => {
+  const users = useSelector((state) => state);
   const dispatch = useDispatch();
 
   function getUsers() {
-    dispatch({type: 'GET_USERS_REQUEST'});
+    dispatch({ type: ActionTypes.GET_USERS_REQUEST });
   }
 
-  function renderItem({item}) {
+  function renderItem({ item }) {
     return (
       <View style={style.userContainer}>
         <Text>{item.name}</Text>
@@ -31,7 +32,8 @@ export const List = props => {
         style={style.button}
         onPress={() => {
           getUsers();
-        }}>
+        }}
+      >
         <Text style={style.clickText}> CLICK HERE TO GET USERS</Text>
       </TouchableOpacity>
       <FlatList
@@ -44,10 +46,10 @@ export const List = props => {
 };
 
 const style = StyleSheet.create({
-  userContainer: {marginVertical: 15, marginHorizontal: 10},
-  button: {alignSelf: 'center', marginVertical: '10%'},
-  clickText: {fontSize: 16},
-  noUsers: {alignSelf: 'center'},
+  userContainer: { marginVertical: 15, marginHorizontal: 10 },
+  button: { alignSelf: "center", marginVertical: "10%" },
+  clickText: { fontSize: 16 },
+  noUsers: { alignSelf: "center" },
 });
 
 export default List;
