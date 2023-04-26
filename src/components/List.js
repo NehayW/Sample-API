@@ -11,9 +11,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { ActionTypes } from "../constants";
 
 export const List = (props) => {
-  const users = useSelector((state) => state);
   const dispatch = useDispatch();
 
+  // Getting user array from reducer
+  const users = useSelector((state) => state);
+
+  // Dispatching action for performing api call
   function getUsers() {
     dispatch({ type: ActionTypes.GET_USERS_REQUEST });
   }

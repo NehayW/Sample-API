@@ -8,10 +8,10 @@ const getUsers = () => {
 };
 
 function* getUsersSaga() {
-  const { response, error } = yield call(getUsers);
+  const { response, error } = yield call(getUsers); // Api call
   if (response) {
     const data = yield response.json();
-    yield put({ type: ActionTypes.GET_USERS_SUCCESS, payload: data });
+    yield put({ type: ActionTypes.GET_USERS_SUCCESS, payload: data }); // Updating value in Redux state
   } else {
     console.log("error: ", error.message);
   }
